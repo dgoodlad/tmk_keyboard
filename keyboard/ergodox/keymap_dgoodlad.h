@@ -9,7 +9,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer 0, QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | ~      |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |        |
+     * | ~      |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |        |   Q  |   W  |   E  |   R  |   T  |      |           | BkSp |   Y  |   U  |   I  |   O  |   P  |   -    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -39,7 +39,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              NO,
                                   ENT , NO,  NO,
         // right hand
-             NO,  6,   7,   8,   9,   0,     NO,
+             NO,  6,   7,   8,   9,   0,    EQL,
            BSPC,  Y,   U,   I,   O,   P,   MINS,
                   H,   J,   K,   L,   SCLN,QUOT,
             ESC,  N,   M,   COMM,DOT, SLSH,RSFT,
