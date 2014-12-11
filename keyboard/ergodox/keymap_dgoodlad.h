@@ -9,12 +9,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer 0, QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |        |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |        |
+     * | ~      |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |   Q  |   W  |   E  |   R  |   T  |      |           | BkSp |   Y  |   U  |   I  |   O  |   P  |        |
+     * |        |   Q  |   W  |   E  |   R  |   T  |      |           | BkSp |   Y  |   U  |   I  |   O  |   P  |   -    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * | TAB    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
-     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |--------+------+------+------+------+------|      |           | ESC  |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |      |      |      | LAlt | GUI  |                                       | Ctrl | RAlt |      |      |      |
@@ -30,7 +30,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP( // layer 0 : default, QWERTY
         // left hand
-        NO , 1,   2,   3,   4,   5,    NO,
+        GRV, 1,   2,   3,   4,   5,    NO,
         NO  ,Q,   W,   E,   R,   T,    NO,
         TAB, A,   S,   D,   F,   G,
         LSFT,Z,   X,   C,   V,   B,    NO,
@@ -40,9 +40,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   ENT , NO,  NO,
         // right hand
              NO,  6,   7,   8,   9,   0,     NO,
-           BSPC,  Y,   U,   I,   O,   P,     NO,
+           BSPC,  Y,   U,   I,   O,   P,   MINS,
                   H,   J,   K,   L,   SCLN,QUOT,
-             NO,  N,   M,   COMM,DOT, SLSH,RSFT,
+            ESC,  N,   M,   COMM,DOT, SLSH,RSFT,
                        RCTL,RALT,NO,    NO,  NO,
         NO  ,  NO,
         NO  ,
