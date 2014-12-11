@@ -48,6 +48,51 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NO  ,
         NO  ,  NO, SPC
     ),
+
+/*
+    // templates to copy from
+
+    KEYMAP(  // LayerN: transparent on edges + hard-defined thumb keys, all others are empty
+        // left hand
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,TRNS,TRNS,LALT,LGUI,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 LCTL,LSFT,TRNS,
+        // right hand
+             NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
+             TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+                  NO,  NO,  NO,  NO,  NO,  TRNS,
+             TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+                       RGUI,RALT,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,RSFT,RCTL
+    ),
+    KEYMAP(  // LayerN: fully transparent
+        // left hand
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,TRNS,TRNS,
+        // right hand
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
+    ),
+*/
 };
 
 enum function_id {
