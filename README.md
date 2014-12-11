@@ -4,6 +4,8 @@ This is a keyboard firmware with some useful features for Atmel AVR controller.
 
 Source code is available here: <http://github.com/tmk/tmk_keyboard>
 
+*NOTE* This is @dgoodlad's fork of [cub_uanic/tmk_keyboard](https://github.com/cub_uanic/tmk_keyboard), which is in turn a fork of [tmk/tmk_keyboard](https://github.com/tmk/tmk_keyboard). The `master` branch is based off of the `cub_layout`, with my own customizations.
+
 
 Features
 --------
@@ -176,7 +178,7 @@ TODO: Magic key combination to avoid unintentional press during plug in
 Mechanical Locking support
 --------------------------
 This feature makes it possible for you to use mechanical switch for `CapsLock`, `NumLock` or `ScrollLock`. To enable this feature define these macros in `config.h` and use `KC_LCAP`, `KC_LNUM` or `KC_LSCR` in keymap for locking key instead of normal `KC_CAPS`, `KC_NLCK` or `KC_SLCK`. Resync option tries to keep lock switch state consistent with keyboard LED state.
- 
+
     #define LOCKING_SUPPORT_ENABLE
     #define LOCKING_RESYNC_ENABLE
 
