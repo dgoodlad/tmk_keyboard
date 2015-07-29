@@ -220,9 +220,9 @@ uint8_t keymap_key_to_keycode(uint8_t layer, key_t key)
     }
 }
 
-#if defined(KEYMAP_CUB)
+#if defined(KEYMAP_DGOODLAD)
 
-// function keymap_fn_to_action will be defined in keymap_cub.h
+// function keymap_fn_to_action will be defined in keymap_dgoodlad.h
 
 #else
 /* translates Fn keycode to action */

@@ -9,21 +9,21 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer 0, QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | ~      |   1  |   2  |   3  |   4  |   5  |      |           |   \  |   6  |   7  |   8  |   9  |   0  |   =    |
+     * | ~ `    |   1  |   2  |   3  |   4  |   5  |      |           |   \  |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |   Q  |   W  |   E  |   R  |   T  |      |           | BkSp |   Y  |   U  |   I  |   O  |   P  |   -    |
-     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * | ESC    |   Q  |   W  |   E  |   R  |   T  |  {   |           |  }   |   Y  |   U  |   I  |   O  |   P  |   -    |
+     * |--------+------+------+------+------+------|  [   |           |  ]   |------+------+------+------+------+--------|
      * | TAB    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
-     * |--------+------+------+------+------+------| ESC  |           | RET  |------+------+------+------+------+--------|
-     * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+     * |--------+------+------+------+------+------| GUI  |           | GUI  |------+------+------+------+------+--------|
+     * | LShift |   Z  |   X  |   C  |   V  |   B  | Esc  |           | Ret  |   N  |   M  |   ,  |   .  |   /  | RShift |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |      |      | LAlt | GUI  |                                       | Ctrl | RAlt |      |      |      |
+     *   |      | ~ `  |      | LAlt | GUI  |                                       | Ctrl | Left | Rght |  Up  | Down |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       | Left | Rght |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |  Up  |      |      |
-     *                                 | SPC  |      |------|       |------| Fn1  | SPC  |
+     *                                 | SPC  | BkSp |------|       |------| Ret  | SPC  |
      *                                 |      |      |      |       | Down |      |      |
      *                                 `--------------------'       `--------------------'
      */
@@ -31,22 +31,22 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP( // layer 0 : default, QWERTY
         // left hand
         GRV, 1,   2,   3,   4,   5,    NO,
-        NO  ,Q,   W,   E,   R,   T,    NO,
-        TAB, A,   S,   D,   F,   G,
-        LSFT,Z,   X,   C,   V,   B,   ESC,
-        NO  ,NO , NO  ,LALT,LGUI,
-                                      NO  ,  NO,
+        ESC ,Q,   W,   E,   R,   T,  LBRC,
+        FN3, A,   S,   D,   F,   G,
+        LSFT,Z,   X,   C,   V,   B,  FN1,
+        NO  ,GRV, NO  ,LALT,LGUI,
+                                      F1  ,  F2,
                                              NO,
-                                  SPC , NO,  NO,
+                                  SPC,BSPC,  NO,
         // right hand
            BSLS,  6,   7,   8,   9,   0,    EQL,
-           BSPC,  Y,   U,   I,   O,   P,   MINS,
-                  H,   J,   K,   L,   SCLN,QUOT,
-            ENT,  N,   M,   COMM,DOT, SLSH,RSFT,
-                       RCTL,RALT,NO,    NO,  NO,
-        LEFT,RGHT,
-        UP  ,
-        DOWN, FN1, SPC
+           RBRC,  Y,   U,   I,   O,   P,   MINS,
+                  H,   J,   K,   L,   SCLN, FN4,
+           FN2 ,  N,   M,   COMM,DOT, SLSH,RSFT,
+                       RCTL,LEFT,RGHT,  UP,DOWN,
+        F3  ,F4  ,
+        NO  ,
+        NO  , ENT, SPC
     ),
 
     KEYMAP(  // Layer1 : home-row parens, etc
@@ -143,15 +143,11 @@ enum layer_ids {
 };
 
 static const uint16_t PROGMEM fn_actions[] = {
-    ACTION_FUNCTION(TEENSY_KEY),              // FN0  = teensy reprogramming button
-    ACTION_LAYER_MOMENTARY(HOME_ROW_SYMBOLS), // FN1  = momentary home-row symbols
-
-    ACTION_MODS_KEY(MOD_LSFT, KC_9),          // FN2  = (
-    ACTION_MODS_KEY(MOD_LSFT, KC_0),          // FN3  = )
-    ACTION_MODS_KEY(MOD_LSFT, KC_LBRACKET),   // FN4  = {
-    ACTION_MODS_KEY(MOD_LSFT, KC_RBRACKET),   // FN5  = }
-    ACTION_MODS_KEY(MOD_LSFT, KC_COMMA),      // FN6  = <
-    ACTION_MODS_KEY(MOD_LSFT, KC_DOT),        // FN7  = >
+    [0] =  ACTION_FUNCTION(TEENSY_KEY),              // FN0  = teensy reprogramming button
+    [1] =  ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),
+    [2] =  ACTION_MODS_TAP_KEY(MOD_RGUI, KC_ENT),
+    [3] =  ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),
+    [4] =  ACTION_MODS_TAP_KEY(MOD_RSFT, KC_QUOT),
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
@@ -164,3 +160,32 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
         print("not supported.\n");
     }
 }
+
+#define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
+//#define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
+
+/*
+ * translates Fn keycode to action
+ * for some layers, use different translation table
+ */
+action_t keymap_fn_to_action(uint8_t keycode)
+{
+    uint8_t layer = biton32(layer_state);
+
+    action_t action;
+    action.code = ACTION_NO;
+
+    //if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
+    //    action.code = pgm_read_word(&fn_actions_4[FN_INDEX(keycode)]);
+    //}
+
+    // by default, use fn_actions from default layer 0
+    // this is needed to get mapping for same key, that was used switch to some layer,
+    // to have possibility to switch layers back
+    if (action.code == ACTION_NO && FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
+        action.code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]);
+    }
+
+    return action;
+}
+
