@@ -17,14 +17,35 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| GUI  |           | GUI  |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  | Esc  |           | Ret  |   N  |   M  |   ,  |   .  |   /  | RShift |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      | ~ `  |      | LAlt | GUI  |                                       | Ctrl | Left | Rght |  Up  | Down |
+     *   |      | ~ `  | LCtl | LAlt | GUI  |                                       | RCtl | Left | Rght |  Up  | Down |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
-     *                                        |      |      |       | Left | Rght |
+     *                                        |  F1  |  F2  |       |  F3  |  F4  |
      *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      |      |       |  Up  |      |      |
+     *                                 |      |      |      |       |      |      |      |
      *                                 | SPC  | BkSp |------|       |------| Ret  | SPC  |
-     *                                 |      |      |      |       | Down |      |      |
+     *                                 |      |      |      |       | ~L1  |      |      |
+     *                                 `--------------------'       `--------------------'
+     *
+     * Keymap: Layer 1, Arrows, Media Keys, Teensy
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F0  |        |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * | Brght+ |      |  Up  |      |      |      | Next |           | Prev |      |      |      |      |      |        |
+     * |--------+------+------+------+------+------| Trck |           | Trck |------+------+------+------+------+--------|
+     * | Brght- | Left | Down | Rght |      |      |------|           |------|      |      |      |      |      |        |
+     * |--------+------+------+------+------+------| Mute |           | Play |------+------+------+------+------+--------|
+     * |        |      |      |      |      |      |      |           | Paus |      |      |      |      |      |        |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |      |                                       |      |      |      |      |      |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |------|       |------|      |      |
+     *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
      */
 
@@ -32,8 +53,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         GRV, 1,   2,   3,   4,   5,    NO,
         ESC ,Q,   W,   E,   R,   T,  LBRC,
-        FN3, A,   S,   D,   F,   G,
-        LSFT,Z,   X,   C,   V,   B,  FN1,
+        TAB, A,   S,   D,   F,   G,
+        LSFT,Z,   X,   C,   V,   B,  FN2,
         NO  ,GRV, NO  ,LALT,LGUI,
                                       F1  ,  F2,
                                              NO,
@@ -41,29 +62,29 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
            BSLS,  6,   7,   8,   9,   0,    EQL,
            RBRC,  Y,   U,   I,   O,   P,   MINS,
-                  H,   J,   K,   L,   SCLN, FN4,
-           FN2 ,  N,   M,   COMM,DOT, SLSH,RSFT,
+                  H,   J,   K,   L,   SCLN,QUOT,
+           FN3 ,  N,   M,   COMM,DOT, SLSH,RSFT,
                        RCTL,LEFT,RGHT,  UP,DOWN,
         F3  ,F4  ,
         NO  ,
-        NO  , ENT, SPC
+        FN1 , ENT, SPC
     ),
 
-    KEYMAP(  // Layer1 : home-row parens, etc
+    KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
         // left hand
-        FN0 ,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,FN6 ,LBRC,FN4 ,FN2 ,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS ,F1  ,F2  ,F3  ,F4  ,F5  ,TRNS,
+        F16  ,TRNS,UP  ,TRNS,TRNS,TRNS,MRWD,
+        F22  ,LEFT,DOWN,RGHT,TRNS,TRNS,
+        TRNS ,TRNS,TRNS,TRNS,TRNS,TRNS,MUTE,
+        FN0  ,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-                  TRNS,FN3 ,FN5 ,RBRC,FN7 ,TRNS,
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,F6  ,F7  ,F8  ,F9  ,F10 ,TRNS,
+             MFFD,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             MPLY,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -118,36 +139,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 enum function_id {
     TEENSY_KEY,
-    CUSTOM_KEY,
-    L_CTRL_ALT_ENT,
-    R_CTRL_ALT_ENT,
-};
-
-enum layer_ids {
-    QWERTY,
-    HOME_ROW_SYMBOLS,
-    BLANK_2,
-    BLANK_3,
-    BLANK_4,
-    BLANK_5,
-    BLANK_6,
-    BLANK_7,
-    BLANK_8,
-    BLANK_9,
-    BLANK_10,
-    BLANK_11,
-    BLANK_12,
-    BLANK_13,
-    BLANK_14,
-    BLANK_15,
 };
 
 static const uint16_t PROGMEM fn_actions[] = {
     [0] =  ACTION_FUNCTION(TEENSY_KEY),              // FN0  = teensy reprogramming button
-    [1] =  ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),
-    [2] =  ACTION_MODS_TAP_KEY(MOD_RGUI, KC_ENT),
-    [3] =  ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),
-    [4] =  ACTION_MODS_TAP_KEY(MOD_RSFT, KC_QUOT),
+    [1] =  ACTION_LAYER_MOMENTARY(1),
+    [2] =  ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),
+    [3] =  ACTION_MODS_TAP_KEY(MOD_RGUI, KC_ENT),
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
